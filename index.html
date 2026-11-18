@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f5ef" />
+    <meta
+      name="description"
+      content="A little home for the recipes you love and the ones you can't wait to try."
+    />
+    <title>The Flavor Book — Recipes worth keeping</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#" aria-label="The Flavor Book home">
+          <span class="brand-mark" aria-hidden="true">f.</span>
+          <span class="brand-name">the flavor<br />book</span>
+        </a>
+
+        <div class="nav-label">YOUR KITCHEN</div>
+        <nav class="main-nav">
+          <button class="nav-link active" data-view="all" type="button">
+            <span class="nav-icon" aria-hidden="true">▦</span> All recipes
+            <span class="nav-count" id="all-count">0</span>
+          </button>
+          <button class="nav-link" data-view="favorites" type="button">
+            <span class="nav-icon heart-icon" aria-hidden="true">♡</span> Favorites
+          </button>
+        </nav>
+
+        <div class="nav-label category-label">COLLECTIONS</div>
+        <nav class="main-nav category-nav" aria-label="Recipe categories">
+          <button class="nav-link" data-category="Breakfast" type="button"><span class="category-dot dot-peach"></span>Breakfast</button>
+          <button class="nav-link" data-category="Lunch" type="button"><span class="category-dot dot-green"></span>Lunch</button>
+          <button class="nav-link" data-category="Dinner" type="button"><span class="category-dot dot-plum"></span>Dinner</button>
+          <button class="nav-link" data-category="Snack" type="button"><span class="category-dot dot-yellow"></span>Snacks</button>
+          <button class="nav-link" data-category="Dessert" type="button"><span class="category-dot dot-yellow"></span>Dessert</button>
+          <button class="nav-link" data-region="West African" type="button"><span class="category-dot dot-peach"></span>West African</button>
+        </nav>
+
+        <div class="sidebar-note">
+          <span class="note-sparkle" aria-hidden="true">✳</span>
+          <p>Good food is all the sweeter when shared.</p>
+          <span class="note-byline">— with love, from your kitchen</span>
+        </div>
+
+        <div class="profile">
+          <div class="avatar" aria-hidden="true">J</div>
+          <div class="profile-copy"><strong>Joliza’s Kitchen</strong><span>Your personal cookbook</span></div>
+          <span class="profile-menu" aria-hidden="true">···</span>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb"><span>YOUR COLLECTION</span><span class="crumb-slash">/</span><strong id="breadcrumb-current">ALL RECIPES</strong></div>
+          <div class="topbar-actions">
+            <label class="search-box">
+              <span class="search-icon" aria-hidden="true"></span>
+              <input id="search-input" type="search" placeholder="Find a recipe..." autocomplete="off" aria-label="Search recipes" />
+              <kbd>/</kbd>
+            </label>
+            <button class="add-button" id="add-recipe-button" type="button"><span aria-hidden="true">＋</span> Add recipe</button>
+          </div>
+        </header>
+
+        <section class="page-intro">
+          <div class="intro-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> A LITTLE INSPIRATION FOR TODAY</p>
+            <h1 id="page-title">Recipes worth<br /><em>keeping.</em></h1>
+            <p class="intro-description" id="page-description">The ones passed down, scribbled on napkins, and made again and again.</p>
+            <button class="surprise-button" id="surprise-button" type="button"><span aria-hidden="true">✳</span> Surprise me</button>
+          </div>
+          <div class="hero-art" aria-label="Illustration of a bowl of fresh ingredients">
+            <div class="hero-sun"></div>
+            <div class="hero-leaf leaf-one"></div>
+            <div class="hero-leaf leaf-two"></div>
+            <div class="hero-bowl"><span class="bowl-food">🥑</span><span class="bowl-food">🍅</span><span class="bowl-food">🥬</span><span class="bowl-food">🫒</span></div>
+            <span class="hero-doodle doodle-one">✳</span>
+            <span class="hero-doodle doodle-two">· · ·</span>
+            <span class="hero-caption">fresh from the garden</span>
+          </div>
+        </section>
+
+        <section class="recipes-section" aria-labelledby="recipes-heading">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">MADE WITH LOVE</p>
+              <h2 id="recipes-heading">A taste of your collection <span id="recipe-count"></span></h2>
+            </div>
+            <label class="sort-control">
+              <span>Sort by</span>
+              <select id="sort-select" aria-label="Sort recipes">
+                <option value="recommended">Recommended</option>
+                <option value="quickest">Quickest first</option>
+                <option value="name">A–Z</option>
+              </select>
+            </label>
+          </div>
+          <div class="filter-row" id="filter-row" aria-label="Filter by category"></div>
+          <div class="recipe-grid" id="recipe-grid"></div>
+          <div class="empty-state" id="empty-state" hidden>
+            <span class="empty-illustration" aria-hidden="true">🍋</span>
+            <h3>No recipes on this page just yet</h3>
+            <p>Try another search or add something delicious to your collection.</p>
+            <button class="add-button" id="empty-add-button" type="button">＋ Add a recipe</button>
+          </div>
+        </section>
+        <footer class="page-footer"><span>Collected with care</span><span aria-hidden="true">✳</span><span>Cooked with joy</span></footer>
+      </main>
+    </div>
+
+    <dialog class="recipe-dialog" id="recipe-dialog" aria-labelledby="dialog-title">
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Close dialog">×</button>
+      <div id="dialog-content"></div>
+    </dialog>
+    <dialog class="recipe-dialog form-dialog" id="form-dialog" aria-labelledby="form-title">
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Close dialog">×</button>
+      <div class="form-header"><p class="section-kicker">ADD TO YOUR COLLECTION</p><h2 id="form-title">A new favorite.</h2><p>Save a little something delicious for later.</p></div>
+      <form id="recipe-form">
+        <label class="form-field full-field">Recipe name<input name="name" required maxlength="70" placeholder="Grandma’s Sunday sauce" /></label>
+        <div class="form-row">
+          <label class="form-field">Category<select name="category" required><option>Breakfast</option><option>Lunch</option><option selected>Dinner</option><option>Snack</option><option>Dessert</option></select></label>
+          <label class="form-field">Prep time (minutes)<input name="time" type="number" min="1" max="1440" value="30" required /></label>
+        </div>
+        <label class="form-field full-field">A little description<textarea name="description" rows="2" maxlength="180" placeholder="What makes this one special?"></textarea></label>
+        <label class="form-field full-field">Ingredients <span class="field-hint">One per line</span><textarea name="ingredients" rows="4" required placeholder="2 cups cherry tomatoes&#10;A handful of fresh basil"></textarea></label>
+        <label class="form-field full-field">Method <span class="field-hint">One step per line</span><textarea name="method" rows="4" required placeholder="Warm the olive oil in a pan..."></textarea></label>
+        <button class="add-button submit-button" type="submit">Save this recipe <span aria-hidden="true">→</span></button>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
